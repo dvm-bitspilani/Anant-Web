@@ -1,4 +1,4 @@
-import React, { type ReactElement } from 'react'
+// import React, { type ReactElement } from 'react'
 import Hero from './Hero'
 import styles from './Home.module.scss'
 import gsap from 'gsap'
