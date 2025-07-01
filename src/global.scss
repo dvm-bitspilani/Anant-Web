@@ -1,0 +1,10 @@
+$spaceBlack: #090708;
+$mobileBreakpoint: 600px;
+
+:root {
+    background-color: $spaceBlack;
+    // background-image: url('./assets/images/space-bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    ;
+}
