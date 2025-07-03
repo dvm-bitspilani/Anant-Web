@@ -1,5 +1,5 @@
 import React, { type ReactElement } from 'react'
-import Hero from './Hero'
+import Hero from './components/Hero'
 import styles from './Home.module.scss'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -11,8 +11,8 @@ const Star = ({className}: {className: string}) => {
 	let customStyles: object = {
 		top: `${randomInt(0, 100)}%`,
 		left: `${randomInt(0, 100)}%`,
-		opacity: randomInt(4, 8)/10,
-		width: `${randomInt(1, 5)}px`
+		opacity: randomInt(40, 75)/100,
+		width: `${randomInt(2, 5)}px`
 	}
 
 	return (<div className={className} style={customStyles} />)
@@ -33,8 +33,9 @@ export default function Home() {
 	return (
 		<div className={styles.homePage}>
 			<div className={styles.homeBg}>
+				<div className={styles.homeBgImg}></div>
 				{
-					Array(50).fill(null).map(() => <Star className={styles.star} />)
+					Array(25).fill(null).map(() => <Star className={styles.star} />)
 				}
 			</div>
 			<Hero></Hero>

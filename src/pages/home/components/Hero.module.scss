@@ -1,4 +1,4 @@
-@use '../../global.scss' as *;
+@use '../../../global.scss' as *;
 
 .hero {
     height: 100vh;
@@ -23,14 +23,17 @@
                 width: 100vw;
             }
         }
-        .satelliteImage {
+        .satelliteImageWrapper {
             position: absolute;
-            width: 27vw;
+            transform: rotateZ(-5deg);
             top: 60%;
             left: 0%;
-            filter: hue-rotate(180deg);
-            transform: rotateZ(-5deg);
 
+            .satelliteImage {
+                position: relative;
+                width: 27vw;
+                filter: hue-rotate(180deg);
+            }
             @media (max-width: $mobileBreakpoint) {
                 width: 180px;
             }
@@ -43,9 +46,21 @@
         left: 0%;
         width: 100vw;
         height: 100vh;
+        transform-origin: 50% 50%;
 
-        .asteroid {
+        .asteroidWrapper {
             position: absolute;
+            left: 100%;
+            top: 0%;
+
+            .asteroid {
+                position: relative;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: $mobileBreakpoint) {
+            transform: rotateZ(30deg);
         }
     }
 
