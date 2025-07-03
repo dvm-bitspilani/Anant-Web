@@ -30,7 +30,7 @@ export default function Asteroid({className, key}: {className: string, key: numb
                 timeLine.restart()
             }
         })
-        //timeLine.seek((randomInt(0, 10)/10)*randDuration)
+        timeLine.seek((randomInt(30, 100)/100)*randDuration)
     })
     
 	const { contextSafe } = useGSAP();

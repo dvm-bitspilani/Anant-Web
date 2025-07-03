@@ -17,11 +17,19 @@ export default function Hero() {
 				scale: 1.2,
 				ease: 'sine.out'
 			}, '+=3')
+			.from(`.${styles.asteroidContainer}`, {
+				duration: 5, 
+				x: `25%`,
+				y: `100%`,
+				scale: 3,
+				rotateZ: 15,
+				ease: 'power2.out'
+			}, `-=5`)
 			.from(`.${styles.satelliteImage}`, {
 				duration: 3,
 				x: `-100%`,
 				ease: 'sine.out',
-				scale: 0.8
+				scale: 0.8,
 			}, '-=1.5')
 			.from(`.${styles.mainLogo}`, {
 				duration: 1.5,
@@ -47,20 +55,25 @@ export default function Hero() {
 		})
 	})
 	useEffect(() => {
-		let timeOut: number;
+		//let mouseMoveTimeOut: number;
 		const mouseMoveHandler = (event: MouseEvent) => {
-			if (timeOut !== undefined) 
+			//if (mouseMoveTimeOut !== undefined) 
 			mouseParallax(event, `.${styles.satelliteImageWrapper}`, 60);
 			
-			timeOut = setTimeout(() => {
-				mouseParallax(event, `.${styles.satelliteImageWrapper}`, 0);
-			}, 300)
+			// mouseMoveTimeOut = setTimeout(() => {
+			// 	mouseParallax(event, `.${styles.satelliteImageWrapper}`, 0);
+			// }, 300)
 		}
 
-		window.addEventListener("mousemove", mouseMoveHandler);
+		//* Activate mouse parallax after intro animation is completed (except for intro)
+		const mouseMoveEventRegisterTimeOut = setTimeout(() => {
+			window.addEventListener("mousemove", mouseMoveHandler)
+		}, 9500);
+		
 
 		return () => {
 			window.removeEventListener("mousemove", mouseMoveHandler);
+			clearTimeout(mouseMoveEventRegisterTimeOut)
 		}
 	}, [])
 
@@ -75,7 +88,7 @@ export default function Hero() {
 			</div>
 			<div className={styles.asteroidContainer}>
 				{
-					Array(50).fill(null).map((elem, index) => <Asteroid key={index} className={styles.asteroid} />)
+					Array(60).fill(null).map((elem, index) => <Asteroid key={index} className={styles.asteroid} />)
 				}
 			</div>
 			<div className={styles.mainLogoWrapper}>

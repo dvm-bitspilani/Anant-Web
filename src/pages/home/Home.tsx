@@ -28,6 +28,12 @@ export default function Home() {
 			left: '50%',
 			opacity: -1
 		})
+
+		gsap.from(`.${styles.homeBgImg}`, {
+			duration: 2,
+			opacity: 0,
+			delay: 3,
+		})
 	})
 
 	return (
