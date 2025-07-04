@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import styles from './Hero.module.scss';
 import Asteroid from './Asteroid';
-import { randomInt } from '../../../global';
 
 const timeline = gsap.timeline()
 

@@ -3,20 +3,8 @@ import Hero from "./components/Hero";
 import styles from "./Home.module.scss";
 import gsap from "gsap";
 import { useGSAP, type ReactRef } from "@gsap/react";
-import { randomInt } from "../../global";
 import { forwardRef, useRef } from "react";
 import StarBackground from "../commonComponent/starbg/StarBackground";
-
-const Star = ({ className }: { className: string }) => {
-	const customStylesRef = useRef({
-		top: `${randomInt(0, 100)}%`,
-		left: `${randomInt(0, 100)}%`,
-		opacity: randomInt(4, 8) / 10,
-		width: `${randomInt(1, 5)}px`,
-	});
-
-	return <div className={className} style={customStylesRef.current} />;
-};
 
 const Home = forwardRef<HTMLDivElement>((_, ref) => {
 	const homeStarContainerRef: ReactRef = useRef(null);
