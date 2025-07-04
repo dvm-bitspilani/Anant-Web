@@ -1,45 +1,40 @@
 // import React, { type ReactElement } from 'react'
-import Hero from "./Hero";
+import Hero from "./components/Hero";
 import styles from "./Home.module.scss";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { randomInt } from "../../global";
-import { forwardRef } from "react";
-
-const Star = ({ className }: { className: string }) => {
-  let customStyles: object = {
-    top: `${randomInt(0, 100)}%`,
-    left: `${randomInt(0, 100)}%`,
-    opacity: randomInt(4, 8) / 10,
-    width: `${randomInt(1, 5)}px`,
-  };
-
-  return <div className={className} style={customStyles} />;
-};
+import { useGSAP, type ReactRef } from "@gsap/react";
+import { forwardRef, useRef } from "react";
+import StarBackground from "../commonComponent/starbg/StarBackground";
 
 const Home = forwardRef<HTMLDivElement>((_, ref) => {
-  useGSAP(() => {
-    gsap.from(`.${styles.star}`, {
-      duration: 3,
-      stagger: 0.09,
-      top: "50%",
-      left: "50%",
-      opacity: -1,
-    });
-  });
+	const homeStarContainerRef: ReactRef = useRef(null);
+	const starClass = "star";
 
-  return (
-    <div className={styles.homePage} ref={ref} id="">
-      <div className={styles.homeBg}>
-        {Array(50)
-          .fill(null)
-          .map(() => (
-            <Star className={styles.star} />
-          ))}
-      </div>
-      <Hero></Hero>
-    </div>
-  );
+	useGSAP(() => {
+		gsap.from(`.${starClass}`, {
+			duration: 3,
+			stagger: 0.09,
+			top: "50%",
+			left: "50%",
+			opacity: -1,
+		});
+	}, {scope: homeStarContainerRef.current});
+
+	return (
+		<div className={styles.homePage} ref={ref}>
+			<StarBackground numOfStars={25} starClass={starClass}>
+				<div className={styles.homeBg} ref={homeStarContainerRef}>
+					<div className={styles.homeBgImg}></div>
+					{/* { Array(25)
+						.fill(null)
+						.map(() => (
+							<Star className={styles.star} />
+					))} */}
+				</div>
+				<Hero></Hero>
+			</StarBackground>
+		</div>
+	);
 });
 
 export default Home;
