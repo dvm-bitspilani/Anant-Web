@@ -87,7 +87,7 @@ export default function Hero() {
 			</div>
 			<div className={styles.asteroidContainer}>
 				{
-					Array(60).fill(null).map((elem, index) => <Asteroid key={index} className={styles.asteroid} />)
+					Array(60).fill(null).map((index) => <Asteroid key={index} className={styles.asteroid} />)
 				}
 			</div>
 			<div className={styles.mainLogoWrapper}>

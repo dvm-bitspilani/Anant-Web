@@ -69,7 +69,7 @@ export default function Asteroid({className, key}: {className: string, key: numb
     }, [])
 
     return 	(
-        <div className={styles.asteroidWrapper} ref={astroWrapRef}>
+        <div className={styles.asteroidWrapper} key={key} ref={astroWrapRef}>
             <img 
                 ref={astroRef} 
                 className={className} 
