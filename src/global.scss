@@ -1,10 +1,13 @@
 $spaceBlack: #090708;
 $mobileBreakpoint: 600px;
 
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Manrope:wght@200..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+$primaryFont: "Goldman", sans-serif;
+
 :root {
-    background-color: $spaceBlack;
-    // background-image: url('./assets/images/space-bg.png');
-    background-size: cover;
-    background-attachment: fixed;
-    ;
+  background-color: $spaceBlack;
+  // background-image: url('./assets/images/space-bg.png');
+  background-size: cover;
+  background-attachment: fixed;
 }

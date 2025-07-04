@@ -1,14 +1,12 @@
 // import { useState } from "react";
 // import styles from "./App.module.scss";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/home/Home";
+import { BrowserRouter } from "react-router-dom";
+import SingleScrollPage from "./SingleScrollPage";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route index path="/" element={<Home />}></Route>
-      </Routes>
+      <SingleScrollPage />
     </BrowserRouter>
   );
 }
