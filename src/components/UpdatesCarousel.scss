@@ -1,0 +1,324 @@
+$cardbackground: black;
+$fontcolor: #fff;
+$workshopcolor:linear-gradient(45deg,#0a634b,#0c4f7c) ;
+$conferencecolor:linear-gradient(45deg,#002a5a,#cd0c80) ; ;
+$eventcolor:linear-gradient(45deg,hsl(291, 95%, 47%),#360765) ;
+$eventscolor:rgb(183, 70, 0);
+$lin:#f0e68c;
+.updates-wrapper {
+  padding: 2rem;
+  max-width: 60vw;
+  
+ 
+  margin: 0 auto;
+
+  .page-title {
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-buttons {
+    text-align: center;
+    margin-bottom: 1.5rem;
+   
+
+    button {
+      
+      margin: 0 0.5rem;
+      padding: 0.4rem 1rem;
+      border: none;
+      border-radius: 20px;
+      background: #eee;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+
+      
+      &:hover {
+        background: #ccc;
+      }
+      &.active {
+        background: #222;
+        color: #fff;
+      }
+
+    }
+  }
+
+  .update-card {
+    
+    height:60vh;
+    background:$cardbackground;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    animation: fadeSlide 0.4s ease;
+
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+      
+
+      .clamped-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .full-text {
+        display: block;
+      }
+      h3 {
+       text-align: center; 
+        margin-bottom: 0.4rem;
+        font-size: 1.3rem;
+        color: $fontcolor;
+        padding-bottom: 1rem;
+      }
+
+      .des {
+        margin: 0;
+        line-height: 2rem;
+        color: $fontcolor;
+      }
+
+      span {
+        display: block;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #999;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #000;
+    background: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.15);
+      background: #f0f0f0;
+    }
+  }
+
+  .overlay {
+    background:rgba(0,0,0,0.9);
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+    .overlay-content {
+      background: $cardbackground;
+      border: 5px solid transparent;
+  border-image: linear-gradient(45deg,rgb(76, 76, 75),#ffffff,#444443) 1;
+  overflow-y: auto;
+      padding: 2rem;
+      max-width: 600px;
+      width: 70%;
+      animation: scaleIn 0.3s ease;
+
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        
+        margin-bottom: 0.5rem;
+        font-size: 1.8rem;
+        color: #fff;
+      }
+
+      .category, .date {
+        font-size: 0.9rem;
+        color: #fff;
+      }
+
+      .desc {
+        margin-top: 1rem;
+        line-height: 1.6;
+        color: #fff;
+        font-size: 1rem;
+      }
+
+      button {
+        margin-top: 1.5rem;
+        padding: 0.5rem 1rem;
+        background: #fff;
+        color: $cardbackground;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+          background: #222;
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes fadeSlide {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+[data-swiper-parallax] {
+  transition: transform 1.3s ease-out, opacity 1.3s ease-out;
+}
+
+.update-card {
+  h3[data-swiper-parallax] {
+    transition-delay: 0.1s;
+  }
+
+  .des[data-swiper-parallax] {
+    transition-delay: 0.2s;
+  }
+
+ 
+}
+.updates-swiper {
+  overflow: visible;
+}
+
+.swiper-slide {
+  transition: transform 0.8s ease;
+}
+.update-card {
+  perspective: 1000px;
+
+  img {
+    transition: transform 0.6s ease;
+    will-change: transform;
+  }
+}
+.updates-swiper {
+  .swiper-slide {
+    scroll-snap-align: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    backface-visibility: hidden;
+  }
+
+  .swiper-wrapper {
+    scroll-behavior: smooth;
+  }
+}
+.update-card {
+   position: relative;
+  border: 5px solid transparent;
+  border-image: linear-gradient(45deg,rgb(76, 76, 75),#ffffff,#444443) 1;
+  
+  padding: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  .trapezium-tag {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    width: 30px;
+
+    height: 120px;
+    background-color: #3498db;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 85%, 0% 15%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .trapezium-tag span {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+
+  &.conference .trapezium-tag {
+    background-image: $conferencecolor
+  }
+
+  &.workshop .trapezium-tag {
+    background-image:  $workshopcolor;
+  }
+
+  &.event .trapezium-tag {
+    background-image:  $eventcolor;
+    opacity:0.9;
+  }
+}
+
+.swiper-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+
+  .custom-prev,
+  .custom-next {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: bold;
+
+  }
+
+  .page-indicator {
+    font-weight: bold;
+    margin-top: -10px;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+}
+

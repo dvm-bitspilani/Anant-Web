@@ -6,9 +6,13 @@ import { randomInt } from '../../../global';
 
 export default function Asteroid({className, key}: {className: string, key: number}) {
 
-    let customStyles = {
+    let customStylesRef = useRef({
         width: `${randomInt(5, 75)}px`,
-    }
+    })
+
+    let customPropertiesRef = useRef({
+        src: `./assets/images/asteroid-${randomInt(1, 13 + 1)}.png`,
+    })
     
     const astroRef = useRef(null)
     const astroWrapRef = useRef(null)
@@ -66,7 +70,11 @@ export default function Asteroid({className, key}: {className: string, key: numb
 
     return 	(
         <div className={styles.asteroidWrapper} ref={astroWrapRef}>
-            <img ref={astroRef} className={className} src={`./assets/images/asteroid-${randomInt(1, 13 + 1)}.png`} style={customStyles} />
+            <img 
+                ref={astroRef} 
+                className={className} 
+                src={customPropertiesRef.current.src} 
+                style={customStylesRef.current} />
         </div>
     )
 }
