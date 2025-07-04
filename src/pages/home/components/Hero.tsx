@@ -21,7 +21,7 @@ export default function Hero() {
 				duration: 5, 
 				x: `25%`,
 				y: `100%`,
-				scale: 3,
+				scale: 10,
 				rotateZ: 15,
 				ease: 'power2.out'
 			}, `-=5`)
@@ -58,7 +58,7 @@ export default function Hero() {
 		//let mouseMoveTimeOut: number;
 		const mouseMoveHandler = (event: MouseEvent) => {
 			//if (mouseMoveTimeOut !== undefined) 
-			mouseParallax(event, `.${styles.satelliteImageWrapper}`, 60);
+			mouseParallax(event, `.${styles.satelliteImageWrapper}`, 40);
 			
 			// mouseMoveTimeOut = setTimeout(() => {
 			// 	mouseParallax(event, `.${styles.satelliteImageWrapper}`, 0);
