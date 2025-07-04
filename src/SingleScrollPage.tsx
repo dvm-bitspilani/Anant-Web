@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import Nav from "./pages/commonComponent/nav/Nav";
 import ContactUs from "./pages/contactUs/ContactUs";
 import { useEffect, useRef } from "react";
+import UpdatesPage from "./pages/updates/Updates";
 
 const pages = [
   "home",
@@ -76,7 +77,9 @@ function SingleScrollPage() {
     <>
       <Nav />
       <Home ref={setRef(pages[0])} />
+      <UpdatesPage ref={setRef(pages[1])} />
       <ContactUs ref={setRef(pages[5])} />
+      
     </>
   );
 }
