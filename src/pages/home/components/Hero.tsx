@@ -80,7 +80,10 @@ export default function Hero() {
 	return (
 		<div className={styles.hero}>
 			<div className={styles.earthMediaWrapper}>
-				<img className={styles.earthMedia} src={`./assets/images/home-earth.png`} />
+				<div className={styles.starLightSource} />
+				<video className={styles.earthMedia} muted autoPlay loop>
+					<source src='./assets/video/.local/earthComp3.mp4' type='video/mp4'></source>
+				</video>
 				<div className={styles.satelliteImageWrapper}>
 					<img className={styles.satelliteImage} src={`./assets/images/home-satellite.png`} />
 				</div>

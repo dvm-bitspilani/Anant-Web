@@ -14,7 +14,7 @@ const Star = ({ className }: { className: string }) => {
     return <div className={className} style={customStylesRef.current} />;
 };
 
-export default function StarBackground({children, numOfStars, starClass = ''} : {children: ReactElement | ReactElement[], numOfStars: number, starClass?: string}) {
+export default function StarBackground({children, numOfStars, starClass = ''} : {children?: ReactElement | ReactElement[], numOfStars: number, starClass?: string}) {
 
     return (
         <>

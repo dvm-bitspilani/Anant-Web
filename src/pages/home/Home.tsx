@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP, type ReactRef } from "@gsap/react";
 import { forwardRef, useRef } from "react";
 import StarBackground from "../commonComponent/starbg/StarBackground";
+import About from "./components/About";
 
 const Home = forwardRef<HTMLDivElement>((_, ref) => {
 	const homeStarContainerRef: ReactRef = useRef(null);
@@ -32,6 +33,9 @@ const Home = forwardRef<HTMLDivElement>((_, ref) => {
 					))} */}
 				</div>
 				<Hero></Hero>
+			</StarBackground>
+			<StarBackground numOfStars={25}>
+				<About />
 			</StarBackground>
 		</div>
 	);
