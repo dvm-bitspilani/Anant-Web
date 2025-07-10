@@ -1,0 +1,57 @@
+@use "../../../global.scss" as *;
+
+.aboutSection {
+    padding: 180px 24px;
+    position: relative;
+
+    .aboutBG {
+        background-image: url("./assets/images/about-curvyBG.png");
+        background-size: cover;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0%;
+        left: 0%;
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    .aboutContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        width: 100%;
+
+        .aboutTitleContainer {
+            margin-bottom: 30px;
+
+            .aboutTitle {
+                margin: 3px 0px;
+                color: $fgColor;
+                font-family: $primaryFont;
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .aboutTitleBottom {
+                width: 100%;
+            }
+        }
+
+        .aboutParaBox {
+            background-color: #21212161;
+            backdrop-filter: blur(3px);
+            border: 1px solid #D5D5D5;
+            width: clamp(0%, 75%, 100% - 48px);
+
+            .aboutPara {
+                color: $fgColor;
+                font-family: $paragraphFont;
+                padding: 9px 24px;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+        }
+    }
+}
