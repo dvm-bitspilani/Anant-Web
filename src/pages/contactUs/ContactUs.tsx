@@ -24,28 +24,52 @@ const ContactUs = forwardRef<HTMLDivElement>((_, ref) => {
           </div>
           <div className={styles.form}>
             <form>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className={styles.input}
-                required
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className={styles.input}
-                required
-              />
-              <textarea
-                placeholder="Your Message"
-                className={styles.textarea}
-                required
-              ></textarea>
-              <button type="submit" className={styles.submitButton}>
-                Send Message
-              </button>
+              <div className={`${styles.section1} ${styles.section}`}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter Your Name"
+                    className={styles.input}
+                    id="name"
+                    required
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    placeholder="Enter Your Email ID"
+                    className={styles.input}
+                    id="email"
+                    required
+                  />
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="mobile">Mobile Number</label>
+                  <input
+                    type="number"
+                    placeholder="Enter Your Mobile Number"
+                    className={styles.input}
+                    id="mobile"
+                    required
+                  />
+                </div>
+              </div>
+              <div className={`${styles.section2} ${styles.section}`}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="message">Your Message To Us</label>
+                  <textarea
+                    placeholder="Enter Your Message"
+                    className={styles.textarea}
+                    id="message"
+                    required
+                    rows={13}
+                  ></textarea>
+                </div>
+              </div>
             </form>
-          </div> 
+          </div>
         </div>
       </div>
     </div>

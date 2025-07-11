@@ -4,24 +4,24 @@
   position: fixed;
   z-index: 1000;
   top: 50%;
-  right: 2%;
+  right: 2.5%;
   transform: translateY(-50%);
   text-align: right;
   height: fit-content;
   .sidebarlines {
     position: absolute;
-    right: 0;
-    top: 38px;
+    right: -1px;
+    top: 36px;
     .sidebarline {
       height: 54px;
-      border-right: 5px solid #3d3d3d;
+      border-right: 3px solid #3d3d3d;
     }
   }
   .navList {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
     margin: 0px;
     .navItem {
       a {
@@ -30,10 +30,10 @@
         color: white;
         font-family: $primaryFont;
         font-weight: 400;
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         .dot {
-          width: 15px;
-          height: 15px;
+          width: 10px;
+          height: 10px;
           border-radius: 50%;
           background-color: white;
           position: absolute;

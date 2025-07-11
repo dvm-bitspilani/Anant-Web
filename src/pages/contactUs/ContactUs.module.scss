@@ -1,5 +1,31 @@
+@use "../../global.scss" as *;
 @mixin test {
   border: 1px solid red;
+}
+
+:root {
+  --labelFontSize: 1.75rem;
+  --inputFontSize: 1rem;
+  --gapFormGroup: 10px;
+  --gapSection: 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --labelFontSize: 1.25rem;
+    --inputFontSize: 0.875rem;
+    --gapFormGroup: 6px;
+    --gapSection: 25px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  :root {
+    --labelFontSize: 1rem;
+    --inputFontSize: 0.8rem;
+    --gapFormGroup: 5px;
+    --gapSection: 15px;
+  }
 }
 
 .contactUs {
@@ -12,6 +38,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
+  z-index: -1;
 
   .heading {
     margin-top: 4vh;
@@ -29,12 +58,15 @@
     height: 70vh;
     width: 70vw;
     position: relative;
+    z-index: 2;
     .background {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      z-index: -1;
+      backdrop-filter: blur(3px);
       .backgroundTop {
         height: 8.5vw;
         overflow: hidden;
@@ -53,6 +85,75 @@
       }
       img {
         width: 100%;
+      }
+    }
+    .form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 2.18;
+      form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        align-content: center;
+        gap: 2vh;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        padding-left: 50px;
+        padding-right: 50px;
+        .section {
+          .formGroup {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gapFormGroup);
+            label {
+              font-family: $paragraphFont;
+              font-weight: 600;
+              font-size: var(--labelFontSize);
+              color: white;
+              filter: drop-shadow(0 4px 2px rgba(255, 255, 255, 0.25));
+            }
+            input {
+              font-size: var(--inputFontSize);
+              font-family: $paragraphFont;
+              width: 22vw;
+              padding: 10px;
+              border-radius: 5px;
+              border: none;
+              background-color: rgba(37, 79, 120, 0.3);
+              color: white;
+              border: 1px solid rgba(158, 158, 158, 1);
+            }
+          }
+        }
+        .section1 {
+          grid-column: 1 / 2;
+          display: flex;
+          flex-direction: column;
+          gap: var(--gapSection);
+        }
+        .section2 {
+          grid-column: 2 / 3;
+          display: flex;
+          flex-direction: column;
+          textarea {
+            font-size: var(--inputFontSize);
+            font-family: $paragraphFont;
+            width: 22vw;
+            height: 15vh;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(37, 79, 120, 0.3);
+            color: white;
+            border: 1px solid rgba(158, 158, 158, 1);
+            height: 100%;
+          }
+        }
       }
     }
   }
