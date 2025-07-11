@@ -1,15 +1,62 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP, type ReactRef } from '@gsap/react';
 import styles from './Hero.module.scss';
 import Asteroid from './Asteroid';
+import { useLocation } from 'react-router-dom';
 
 const timeline = gsap.timeline()
 
 export default function Hero() {
 
+	const location = useLocation();
+	const lightSourceRef: ReactRef = useRef(null);
+	const heroRef: ReactRef = useRef(null);
+	const [astroIntroOver, setAstroIntroOver] = useState(false);
+
 	useGSAP(() => {
-		timeline.from(`.${styles.earthMedia}`, {
+		gsap.to(`.${styles.satelliteImage}`, {
+			duration: 3,
+			y: -15,
+			repeat: -1,
+			yoyo: true,
+			ease: 'sine.inOut'
+		})
+
+		gsap.registerPlugin(ScrollTrigger);
+		gsap.to(`.${styles.earthMedia}`, {
+			scrollTrigger: {
+				trigger: heroRef.current,
+				scrub: true,
+				start: "top 0%"
+			},
+			y: '30%',
+			ease: "sine.out"
+		})
+		gsap.to(`.${styles.starLightSource}`, {
+			scrollTrigger: {
+				trigger: heroRef.current,
+				scrub: true,
+				start: "top 0%"
+			},
+			opacity: -0.5
+		})
+		gsap.to(`.${styles.satelliteImage}`, {
+			scrollTrigger: {
+				trigger: heroRef.current,
+				scrub: true,
+				start: "top 0%"
+			},
+			top: '+=75px',
+		})
+
+
+		if (location.pathname !== "/") {
+			lightSourceRef.current.style.animationDelay = "0s";
+			return
+		}
+		timeline.from(`.${styles.earthWrapper}`, {
 				duration: 5,
 				x: `-100%`,
 				y: `-100%`,
@@ -35,14 +82,6 @@ export default function Hero() {
 				y: -30,
 				opacity: 0
 			})
-
-		gsap.to(`.${styles.satelliteImage}`, {
-			duration: 3,
-			y: -15,
-			repeat: -1,
-			yoyo: true,
-			ease: 'sine.inOut'
-		})
 	})
 
 	const { contextSafe } = useGSAP();
@@ -78,19 +117,25 @@ export default function Hero() {
 
 	
 	return (
-		<div className={styles.hero}>
+		<div ref={heroRef} className={styles.hero}>
 			<div className={styles.earthMediaWrapper}>
-				<div className={styles.starLightSource} />
-				<video className={styles.earthMedia} muted autoPlay loop>
-					<source src='./assets/video/.local/earthComp3.mp4' type='video/mp4'></source>
-				</video>
+				<div ref={lightSourceRef} className={styles.starLightSource} />
+				<div className={styles.earthWrapper}>
+					<video className={styles.earthMedia} muted autoPlay loop>
+						<source src='./assets/video/earth.mp4' type='video/mp4'></source>
+					</video>
+				</div>
 				<div className={styles.satelliteImageWrapper}>
 					<img className={styles.satelliteImage} src={`./assets/images/home-satellite.png`} />
 				</div>
 			</div>
 			<div className={styles.asteroidContainer}>
 				{
-					Array(60).fill(null).map((index) => <Asteroid key={index} className={styles.asteroid} />)
+					Array(40).fill(null).map((value, index) => <Asteroid 
+						key={index + value} 
+						className={styles.asteroid}
+						astroIntroOver={astroIntroOver}
+						setAstroIntroOver={setAstroIntroOver} />)
 				}
 			</div>
 			<div className={styles.mainLogoWrapper}>

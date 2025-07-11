@@ -18,23 +18,27 @@
             aspect-ratio: 1;
             border-radius: 100%;
             @keyframes lightIn {
-                from {box-shadow: 0px 0px 0px 0px rgba(255, 132, 0, 0.578);}
+                from {box-shadow: 0px 0px 0px 0px rgba(255, 132, 0, 0.72);}
                 to {box-shadow: 0px 0px 36vw 18vw rgba(255, 132, 0, 0.72);}
             }
         }
-        .earthMedia {
+        .earthWrapper {
             position: relative;
-            padding: 1px;
-            width: clamp(300px, 42vw, 81vh);
-            aspect-ratio: 1;
-            top: 0%;
-            left: 0%;
             transform: translate(-6%, -36%);
-            border-radius: 100%;
-            box-shadow: 0px 0px 30px 0px rgba(0, 64, 255, 0.36);
 
-            @media (max-width: 600px) {
-                width: 100svw;
+            .earthMedia {
+                position: relative;
+                padding: 1px;
+                width: clamp(300px, 42vw, 81vh);
+                aspect-ratio: 1;
+                top: 0%;
+                left: 0%;
+                border-radius: 100%;
+                box-shadow: 0px 0px 30px 0px rgba(0, 64, 255, 0.36);
+
+                @media (max-width: 600px) {
+                    width: 100svw;
+                }
             }
         }
         .satelliteImageWrapper {

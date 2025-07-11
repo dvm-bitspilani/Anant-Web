@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
 import styles from './Hero.module.scss';
 import { randomInt } from '../../../global';
 
-export default function Asteroid({className, key}: {className: string, key: number}) {
+export default function Asteroid({className, key, astroIntroOver, setAstroIntroOver}: {className: string, key: number, astroIntroOver: boolean, setAstroIntroOver: React.Dispatch<React.SetStateAction<boolean>>}) {
 
     let customStylesRef = useRef({
         width: `${randomInt(5, 75)}px`,
@@ -15,6 +16,7 @@ export default function Asteroid({className, key}: {className: string, key: numb
     })
     
     const astroRef = useRef(null)
+    const astroInWrapRef = useRef(null)
     const astroWrapRef = useRef(null)
 
     useGSAP(() => {
@@ -26,7 +28,7 @@ export default function Asteroid({className, key}: {className: string, key: numb
             left: `${randomInt(95, 125)}%`,
         }, {
             top: `100%`,
-            left: `${randomInt(-20, 0)}%`,
+            left: `${randomInt(-25, 0)}%`,
             duration: randDuration,
             ease: "none",
             // delay: randDelay,
@@ -45,6 +47,17 @@ export default function Asteroid({className, key}: {className: string, key: numb
             ease: 'none',
         }, `-=${randDuration}`);
         timeLine.seek((randomInt(30, 100)/100)*randDuration)
+
+        gsap.registerPlugin(ScrollTrigger)
+        gsap.to(astroInWrapRef.current, {
+			scrollTrigger: {
+				trigger: `.${styles.hero}`,
+				scrub: true,
+				start: "top 0%"
+			},
+			y: randomInt(90, 180),
+            ease: "sine.inOut"
+        })
     })
     
 	const { contextSafe } = useGSAP();
@@ -76,11 +89,13 @@ export default function Asteroid({className, key}: {className: string, key: numb
 
     return 	(
         <div className={styles.asteroidWrapper} key={key} ref={astroWrapRef}>
-            <img 
-                ref={astroRef} 
-                className={className} 
-                src={customPropertiesRef.current.src} 
-                style={customStylesRef.current} />
+            <div className={styles.asteroidInnerWrapper} ref={astroInWrapRef}>
+                <img 
+                    ref={astroRef} 
+                    className={className} 
+                    src={customPropertiesRef.current.src} 
+                    style={customStylesRef.current} />
+            </div>
         </div>
     )
 }
