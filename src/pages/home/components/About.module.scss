@@ -13,7 +13,7 @@
         z-index: -1;
 
         .aboutBGImg {
-            background-image: url("./assets/images/about-curvyBG.png");
+            background-image: url("/assets/images/about-curvyBG.png");
             background-size: cover;
             position: relative;
             height: 100%;
@@ -23,7 +23,7 @@
             opacity: 0.3;
 
             @media (max-width: $mobileBreakpoint) {
-                background-image: url("./assets/images/about-curvyBG-mobile.png");
+                background-image: url("/assets/images/about-curvyBG-mobile.png");
             }
         }
 
