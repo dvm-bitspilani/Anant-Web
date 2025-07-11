@@ -7,6 +7,7 @@ import { randomInt } from '../../../global';
 
 export default function Asteroid({className, key, astroIntroOver, setAstroIntroOver}: {className: string, key: number, astroIntroOver: boolean, setAstroIntroOver: React.Dispatch<React.SetStateAction<boolean>>}) {
 
+    console.log(astroIntroOver, setAstroIntroOver) //? Temp, just to get rid of build errors
     let customStylesRef = useRef({
         width: `${randomInt(5, 75)}px`,
     })
