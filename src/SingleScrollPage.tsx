@@ -85,7 +85,6 @@ function SingleScrollPage() {
       <UpdatesPage ref={setRef(pages[1])} />
       <Publications ref={setRef(pages[2])} id={pages[2]} />
       <ContactUs ref={setRef(pages[5])} />
-      
     </div>
   );
 }

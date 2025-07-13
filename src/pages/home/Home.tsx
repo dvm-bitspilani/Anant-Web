@@ -26,12 +26,11 @@ const Home = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return (
 		<div className={styles.homePage} ref={ref}>
-			<StarBackground numOfStars={25} starClass={starClass}>
-				<div className={styles.homeBg} ref={homeStarContainerRef}>
-					<div className={styles.homeBgImg}></div>
-				</div>
-				<Hero></Hero>
-			</StarBackground>
+			<div className={styles.homeBg} ref={homeStarContainerRef}>
+				<StarBackground numOfStars={15} starClass={starClass} />
+				<div className={styles.homeBgImg}></div>
+			</div>
+			<Hero></Hero>
 			<About />
 		</div>
 	);

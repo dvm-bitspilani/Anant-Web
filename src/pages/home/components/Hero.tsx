@@ -31,7 +31,7 @@ export default function Hero() {
 				scrub: true,
 				start: "top 0%"
 			},
-			y: '30%',
+			top: '30vh',
 			ease: "sine.out"
 		})
 		gsap.to(`.${styles.starLightSource}`, {
@@ -52,35 +52,41 @@ export default function Hero() {
 		})
 
 
-		if (location.pathname !== "/") {
-			lightSourceRef.current.style.animationDelay = "0s";
-			return
-		}
+		if (location.pathname !== "/") return
 		timeline.from(`.${styles.earthWrapper}`, {
 				duration: 5,
 				x: `-100%`,
 				y: `-100%`,
 				scale: 1.2,
 				ease: 'sine.out'
-			}, '+=3')
+			}, 2)
 			.from(`.${styles.asteroidContainer}`, {
 				duration: 5, 
 				x: `25%`,
-				y: `100%`,
+				y: `200%`,
 				scale: 10,
+				opacity: -2,
 				rotateZ: 15,
 				ease: 'power2.out'
-			}, `-=5`)
+			}, 2)
 			.from(`.${styles.satelliteImage}`, {
 				duration: 3,
 				x: `-100%`,
 				ease: 'sine.out',
 				scale: 0.8,
-			}, '-=1.5')
+			}, 5)
+			.from(`.${styles.starLightSource}`, {
+				duration: 3,
+				opacity: 0,
+				ease: "sine.out"
+			}, 6)
 			.from(`.${styles.mainLogo}`, {
 				duration: 1.5,
 				y: -30,
 				opacity: 0
+			}, 7.5)
+			.set(`.${styles.earthWrapper}, .${styles.satelliteImage}, .${styles.asteroidContainer}`, {
+				clearProps: "all"
 			})
 	})
 
@@ -96,7 +102,7 @@ export default function Hero() {
 		//let mouseMoveTimeOut: number;
 		const mouseMoveHandler = (event: MouseEvent) => {
 			//if (mouseMoveTimeOut !== undefined) 
-			mouseParallax(event, `.${styles.satelliteImageWrapper}`, 40);
+			mouseParallax(event, `.${styles.satelliteImageWrapper}`, 30);
 			
 			// mouseMoveTimeOut = setTimeout(() => {
 			// 	mouseParallax(event, `.${styles.satelliteImageWrapper}`, 0);
@@ -106,7 +112,7 @@ export default function Hero() {
 		//* Activate mouse parallax after intro animation is completed (except for intro)
 		const mouseMoveEventRegisterTimeOut = setTimeout(() => {
 			window.addEventListener("mousemove", mouseMoveHandler)
-		}, 9500);
+		}, location.pathname === "/" ? 7500 : 0);
 		
 
 		return () => {
@@ -129,14 +135,16 @@ export default function Hero() {
 					<img className={styles.satelliteImage} src={`./assets/images/home-satellite.png`} />
 				</div>
 			</div>
-			<div className={styles.asteroidContainer}>
-				{
-					Array(40).fill(null).map((value, index) => <Asteroid 
-						key={index + value} 
-						className={styles.asteroid}
-						astroIntroOver={astroIntroOver}
-						setAstroIntroOver={setAstroIntroOver} />)
-				}
+			<div className={styles.asteroidContWrapper}>
+				<div className={styles.asteroidContainer}>
+					{
+						Array(40).fill(null).map((value, index) => <Asteroid 
+							key={index + value} 
+							className={styles.asteroid}
+							astroIntroOver={astroIntroOver}
+							setAstroIntroOver={setAstroIntroOver} />)
+					}
+				</div>
 			</div>
 			<div className={styles.mainLogoWrapper}>
 				<img className={styles.mainLogo} src={`./assets/images/home-anant-logo.png`} />

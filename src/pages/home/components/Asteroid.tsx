@@ -28,7 +28,7 @@ export default function Asteroid({className, key, astroIntroOver, setAstroIntroO
             top: `0%`,
             left: `${randomInt(95, 125)}%`,
         }, {
-            top: `100%`,
+            top: `95%`,
             left: `${randomInt(-25, 0)}%`,
             duration: randDuration,
             ease: "none",
@@ -47,7 +47,7 @@ export default function Asteroid({className, key, astroIntroOver, setAstroIntroO
             duration: randDuration,
             ease: 'none',
         }, `-=${randDuration}`);
-        timeLine.seek((randomInt(30, 100)/100)*randDuration)
+        timeLine.seek((randomInt(5, 95)/100)*randDuration)
 
         gsap.registerPlugin(ScrollTrigger)
         gsap.to(astroInWrapRef.current, {
@@ -80,7 +80,7 @@ export default function Asteroid({className, key, astroIntroOver, setAstroIntroO
 		//* Activate mouse parallax after intro animation is completed (except for intro)
 		const mouseMoveEventRegisterTimeOut = setTimeout(() => {
 			window.addEventListener("mousemove", mouseMoveHandler)
-		}, 9500);
+		}, location.pathname === "/" ? 7500 : 0);
 
         return () => {
             window.removeEventListener("mousemove", mouseMoveHandler)
