@@ -6,12 +6,15 @@ import { useGSAP, type ReactRef } from "@gsap/react";
 import { forwardRef, useRef } from "react";
 import StarBackground from "../commonComponent/starbg/StarBackground";
 import About from "./components/About";
+import { useLocation } from "react-router-dom";
 
 const Home = forwardRef<HTMLDivElement>((_, ref) => {
 	const homeStarContainerRef: ReactRef = useRef(null);
 	const starClass = "star";
+	const location = useLocation();
 
 	useGSAP(() => {
+		if (location.pathname !== "/") return
 		gsap.from(`.${starClass}`, {
 			duration: 3,
 			stagger: 0.09,
@@ -23,20 +26,12 @@ const Home = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return (
 		<div className={styles.homePage} ref={ref}>
-			<StarBackground numOfStars={25} starClass={starClass}>
-				<div className={styles.homeBg} ref={homeStarContainerRef}>
-					<div className={styles.homeBgImg}></div>
-					{/* { Array(25)
-						.fill(null)
-						.map(() => (
-							<Star className={styles.star} />
-					))} */}
-				</div>
-				<Hero></Hero>
-			</StarBackground>
-			<StarBackground numOfStars={25}>
-				<About />
-			</StarBackground>
+			<div className={styles.homeBg} ref={homeStarContainerRef}>
+				<StarBackground numOfStars={15} starClass={starClass} />
+				<div className={styles.homeBgImg}></div>
+			</div>
+			<Hero></Hero>
+			<About />
 		</div>
 	);
 });
