@@ -14,7 +14,7 @@ export default function About() {
 				start: "top 100%",
 				scrub: true,
 			},
-			y: '75px'
+			top: '20%'
 		});
 		gsap.to(`.${styles.aboutBGGreenPlanet}`, {
 			scrollTrigger: {
@@ -22,7 +22,7 @@ export default function About() {
 				start: "top 50%",
 				scrub: true,
 			},
-			y: '100px'
+			bottom: '5%'
 		})
 	})
 
@@ -30,7 +30,9 @@ export default function About() {
 		<div className={styles.aboutSection}>
 			<StarBackground numOfStars={25}>
 				<div className={styles.aboutBG}>
-					<div className={styles.aboutBGImg} />
+					<img className={styles.aboutBGImg} src={"/assets/images/about-curvyBG.png"} />
+					<img className={styles.aboutBGImg} src={"/assets/images/about-curvyBG-mobile.png"} />
+					{/* <div className={styles.aboutBGImg} /> */}
 					<img className={styles.aboutBGPurplePlanet} src="./assets/images/about-purplePlanet.png" />
 					<img className={styles.aboutBGGreenPlanet} src="./assets/images/about-greenPlanet.png" />
 				</div>
