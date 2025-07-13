@@ -1,5 +1,5 @@
 import styles from "./ContactUs.module.scss";
-import { forwardRef, use, useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import heading from "/assets/images/contactHeading.svg";
 import formBg from "/assets/images/contactFormBackground.svg";
 import submitBtn from "/assets/images/sendSubmitBtn.svg";
