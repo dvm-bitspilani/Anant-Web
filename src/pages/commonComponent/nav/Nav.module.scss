@@ -1,5 +1,8 @@
 @use "../../../global.scss" as *;
 
+.menuIcon {
+  display: none;
+}
 .nav {
   position: fixed;
   z-index: 1000;
@@ -8,6 +11,9 @@
   transform: translateY(-50%);
   text-align: right;
   height: fit-content;
+  .logo {
+    display: none;
+  }
   .sidebarlines {
     position: absolute;
     right: -1px;
@@ -23,6 +29,7 @@
     flex-direction: column;
     gap: 30px;
     margin: 0px;
+    list-style: none;
     .navItem {
       a {
         position: relative;
@@ -53,6 +60,107 @@
         }
         .dot {
           background-color: #3d3d3d;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menuIcon {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 40px;
+    left: 20px;
+    width: 37px;
+    height: 37px;
+    cursor: pointer;
+    z-index: 10000;
+    border: 1px solid #888888;
+    backdrop-filter: blur(5px);
+    background-color: transparent;
+    padding: 8px;
+    justify-content: space-evenly;
+    .line1,
+    .line2,
+    .line3 {
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      margin: 2px 0;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  .nav {
+    background-color: #0c0c0c;
+    backdrop-filter: blur(6px);
+    height: 100svh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 30px;
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 15vh;
+      img {
+        width: 40%;
+      }
+    }
+
+    .navList {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin: 0px;
+      position: relative;
+      .sidebarlines {
+        position: absolute;
+        left: 24px;
+        top: 36px;
+        .sidebarline {
+          height: 64px;
+          border: none;
+          border-left: 3px solid white;
+        }
+      }
+      .navItem {
+        a {
+          display: flex;
+          flex-direction: row-reverse;
+          gap: 10px;
+          align-items: center;
+          justify-content: flex-end;
+          .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #87a1f7;
+            position: static;
+            transform: translateY(0%);
+          }
+        }
+        .activeLink {
+          color: #87a1f7;
+        }
+        .navLink {
+          color: white;
+          transition: color 0.3s ease;
+          &:hover {
+            color: white;
+          }
+          .dot {
+            background-color: white;
+          }
         }
       }
     }

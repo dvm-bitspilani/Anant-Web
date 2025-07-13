@@ -6,7 +6,7 @@ import Nav from "./pages/commonComponent/nav/Nav";
 import ContactUs from "./pages/contactUs/ContactUs";
 import { useEffect, useRef } from "react";
 import UpdatesPage from "./pages/updates/Updates";
-import styles from "./SingleScrollerPage.module.scss"
+import styles from "./SingleScrollerPage.module.scss";
 
 const pages = [
   "home",
@@ -83,7 +83,6 @@ function SingleScrollPage() {
       <Home ref={setRef(pages[0])} />
       <UpdatesPage ref={setRef(pages[1])} />
       <ContactUs ref={setRef(pages[5])} />
-      
     </div>
   );
 }

@@ -1,10 +1,12 @@
 @use "../../global.scss" as *;
+
 @mixin test {
   border: 1px solid red;
 }
 
 :root {
   --labelFontSize: 1.75rem;
+  --btnFontSize: 1.5rem;
   --inputFontSize: 1rem;
   --gapFormGroup: 10px;
   --gapSection: 40px;
@@ -13,6 +15,7 @@
 @media screen and (max-width: 1200px) {
   :root {
     --labelFontSize: 1.25rem;
+    --btnFontSize: 1.25rem;
     --inputFontSize: 0.875rem;
     --gapFormGroup: 6px;
     --gapSection: 25px;
@@ -22,10 +25,15 @@
 @media screen and (max-width: 1000px) {
   :root {
     --labelFontSize: 1rem;
+    --btnFontSize: 1rem;
     --inputFontSize: 0.8rem;
     --gapFormGroup: 5px;
     --gapSection: 15px;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .contactUs {
@@ -48,17 +56,21 @@
     justify-content: center;
     align-items: center;
   }
+
   .body {
     flex: 1;
     display: flex;
     align-items: center;
     padding-left: 5vw;
+    box-sizing: border-box;
   }
+
   .formContainer {
-    height: 70vh;
+    height: fit-content;
     width: 70vw;
     position: relative;
     z-index: 2;
+
     .background {
       position: absolute;
       top: 0;
@@ -67,31 +79,42 @@
       height: 100%;
       z-index: -1;
       backdrop-filter: blur(3px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
       .backgroundTop {
         height: 8.5vw;
         overflow: hidden;
       }
+
       .backgroundMid {
-        height: 15vw;
+        height: 0;
         overflow: hidden;
         display: flex;
         align-items: center;
       }
+
       .backgroundBottom {
         height: 8.5vw;
         overflow: hidden;
         display: flex;
         align-items: end;
       }
+
       img {
         width: 100%;
       }
     }
+
     .form {
       display: flex;
       align-items: center;
       justify-content: center;
       aspect-ratio: 2.18;
+      box-sizing: border-box;
+      opacity: 0;
+
       form {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -105,11 +128,15 @@
         z-index: 1;
         padding-left: 50px;
         padding-right: 50px;
+        box-sizing: border-box;
+        transform: translateY(20px);
+
         .section {
           .formGroup {
             display: flex;
             flex-direction: column;
             gap: var(--gapFormGroup);
+
             label {
               font-family: $paragraphFont;
               font-weight: 600;
@@ -117,6 +144,7 @@
               color: white;
               filter: drop-shadow(0 4px 2px rgba(255, 255, 255, 0.25));
             }
+
             input {
               font-size: var(--inputFontSize);
               font-family: $paragraphFont;
@@ -127,19 +155,23 @@
               background-color: rgba(37, 79, 120, 0.3);
               color: white;
               border: 1px solid rgba(158, 158, 158, 1);
+              box-sizing: border-box;
             }
           }
         }
+
         .section1 {
           grid-column: 1 / 2;
           display: flex;
           flex-direction: column;
           gap: var(--gapSection);
         }
+
         .section2 {
           grid-column: 2 / 3;
           display: flex;
           flex-direction: column;
+
           textarea {
             font-size: var(--inputFontSize);
             font-family: $paragraphFont;
@@ -152,6 +184,133 @@
             color: white;
             border: 1px solid rgba(158, 158, 158, 1);
             height: 100%;
+            box-sizing: border-box;
+          }
+        }
+
+        .subBtn {
+          position: absolute;
+          top: 97%;
+          width: 22vw;
+          transform: translateY(-20px);
+          opacity: 0;
+
+          button {
+            background: none;
+            border: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+            width: 100%;
+            box-sizing: border-box;
+
+            .hover {
+              width: 84%;
+              translate: 0px -3px;
+              grid-column: 1 / 2;
+              grid-row: 1 / 2;
+              transition: width 0.1s ease-in-out;
+            }
+
+            .btnBackground {
+              width: 100%;
+              grid-column: 1 / 2;
+              grid-row: 1 / 2;
+            }
+
+            .text {
+              grid-column: 1 / 2;
+              grid-row: 1 / 2;
+              color: white;
+              font-family: $btnFont;
+              font-size: var(--btnFontSize);
+              translate: 0 -3px;
+            }
+            &:hover {
+              .hover {
+                width: 90%;
+              }
+            }
+            &:active {
+              .hover {
+                width: 90%;
+              }
+              .text {
+                color: grey;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contactUs {
+    .heading {
+      margin-top: 4vh;
+      img {
+        width: 45%;
+      }
+    }
+    .body {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+    .formContainer {
+      width: 100%;
+      .background {
+        display: none;
+      }
+
+      .form {
+        display: grid;
+        width: 100%;
+        height: fit-content;
+
+        box-sizing: border-box;
+        form {
+          width: 100svw;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto auto auto;
+          padding-left: 5vw;
+          padding-right: 7vw;
+
+          box-sizing: border-box;
+
+          .section1 {
+            grid-column: 1 / 2;
+            width: 100%;
+            .formGroup {
+              input {
+                width: 100%;
+                box-sizing: border-box;
+              }
+            }
+          }
+          .section2 {
+            grid-column: 1 / 2;
+            width: 100%;
+            textarea {
+              width: 100%;
+              box-sizing: border-box;
+            }
+          }
+
+          .subBtn {
+            position: static;
+            width: 70%;
+            button {
+              .hover {
+                translate: 0px 0px;
+              }
+              .text {
+                translate: 0px 0px;
+              }
+            }
           }
         }
       }
