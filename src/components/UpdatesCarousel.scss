@@ -1,23 +1,48 @@
+@use "../global.scss" as *;
 $cardbackground: black;
 $fontcolor: #fff;
-$workshopcolor:linear-gradient(45deg,#0a634b,#0c4f7c) ;
-$conferencecolor:linear-gradient(45deg,#002a5a,#cd0c80) ; ;
-$eventcolor:linear-gradient(45deg,hsl(291, 95%, 47%),#360765) ;
-$eventscolor:rgb(183, 70, 0);
+$workshopcolor:#14327D;//linear-gradient(45deg,#0a634b,#0c4f7c) ;
+$conferencecolor:#3A147D;//linear-gradient(45deg,#002a5a,#cd0c80) ; ;
+$eventcolor:#145D7D;//linear-gradient(45deg,hsl(291, 95%, 47%),#360765) ;
+$eventscolor:rgb(183, 70, 0); 
 $lin:#f0e68c;
 .updates-wrapper {
   padding: 2rem;
   max-width: 60vw;
-  
+  height:100vh !important;
  
   margin: 0 auto;
+  margin-left: 75px;
 
   .page-title {
     text-align: center;
     color: #fff;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-family: $primaryFont;
+    
+        font-weight: 400;
+        font-size: 1.75rem;
+        
+    margin: 0;
+    margin-bottom: 0.5rem;
+    width: 100vw;
+    padding: 0;
+    left:-75px;
+    margin-left: -5%;
+    position: relative;
+    overflow: hidden;
   }
+  .headingline {
+    width: 100vw;
+    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  
+    left:-75px;
+    margin-left: -5%;
+    position: relative;
+}
+
 
   .filter-buttons {
     text-align: center;
@@ -51,7 +76,6 @@ $lin:#f0e68c;
     
     height:60vh;
     background:$cardbackground;
-    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -66,30 +90,51 @@ $lin:#f0e68c;
 
     .card-content {
       padding: 1rem;
-      
+      display: flex;
+      flex-direction: column;
+      img{
+        align-self: center;
+        width: 10vw;
+        border-radius: 4.6px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+      }
 
-      .clamped-text {
+      /*.clamped-text {
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
         overflow: hidden;
-      }
+      }*/
 
       .full-text {
         display: block;
       }
       h3 {
        text-align: center; 
-        margin-bottom: 0.4rem;
-        font-size: 1.3rem;
+        margin-bottom: -0.4rem;
+        font-family: $primaryFont;
+        margin-top: 0;
+        font-weight: 400;
+        max-width: 50vw;
+        align-self: center;
+        font-size: 1.75rem;
         color: $fontcolor;
         padding-bottom: 1rem;
       }
+    
+      
 
       .des {
         margin: 0;
-        line-height: 2rem;
+        margin-right: 5%;
+        margin-left: 5%;
+        line-height: 100%;
         color: $fontcolor;
+        font-family:$paragraphFont;
+        font-weight: 500;
+        font-size: 19px;
       }
 
       span {
@@ -203,6 +248,7 @@ $lin:#f0e68c;
       opacity: 1;
     }
   }
+ 
 }
 [data-swiper-parallax] {
   transition: transform 1.3s ease-out, opacity 1.3s ease-out;
@@ -247,27 +293,40 @@ $lin:#f0e68c;
 }
 .update-card {
    position: relative;
-  border: 5px solid transparent;
-  border-image: linear-gradient(45deg,rgb(76, 76, 75),#ffffff,#444443) 1;
-  
+  //border-image: linear-gradient(45deg,rgb(76, 76, 75),#ffffff,#444443) 1;
+  border: 1.84px solid #FFFFFF;
   padding: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
+  .trapezium-border {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 31.84px;
+  height: 123.68px; 
+  background: white;
+  clip-path: polygon(100% 0%, 100% 100%, 0% 85%, 0% 15%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   .trapezium-tag {
     position: absolute;
     top: 50%;
     right: 0px;
     transform: translateY(-50%);
     width: 30px;
-
     height: 120px;
-    background-color: #3498db;
     clip-path: polygon(100% 0%, 100% 100%, 0% 85%, 0% 15%);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    
   }
+
+
+  
 
   .trapezium-tag span {
   transform: rotate(-90deg);
@@ -281,15 +340,15 @@ $lin:#f0e68c;
 
 
   &.conference .trapezium-tag {
-    background-image: $conferencecolor
+    background-color: $conferencecolor
   }
 
   &.workshop .trapezium-tag {
-    background-image:  $workshopcolor;
+    background-color:  $workshopcolor;
   }
 
   &.event .trapezium-tag {
-    background-image:  $eventcolor;
+    background-color:  $eventcolor;
     opacity:0.9;
   }
 }
@@ -322,3 +381,225 @@ $lin:#f0e68c;
   }
 }
 
+ /*.category-selector {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+
+  .main-button {
+    padding: 10px 16px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    text-transform: capitalize;
+    min-width: 150px;
+    font-weight: 600;
+    transition: background 0.3s ease, border-color 0.3s ease;
+
+    &.event {
+      background: #007bff;
+      border-color: #007bff;
+    }
+
+    &.workshop {
+      background: #1e40af;
+      border-color: #1e40af;
+    }
+
+    &.conference {
+      background: #6a0dad;
+      border-color: #6a0dad;
+    }
+
+    &.all {
+      background: transparent;
+    }
+  }
+
+  .category-box {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    z-index: 10;
+    background: #111;
+    border: 1px solid #888;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .category-option {
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid #888;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    text-transform: capitalize;
+    margin-bottom: 6px;
+    font-weight: 500;
+    transition: background 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      background: #333;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}*/
+.category-filter {
+  position: relative;
+  z-index: 20;
+  margin-bottom: 2rem;
+
+  .filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: $paragraphFont;
+        font-size: 19px;
+        font-weight: 500;
+        height: 58px;
+    background: transparent;
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 10px 16px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-weight: 600;
+    transition: border-color 0.3s ease;
+
+    svg {
+      font-size: 18px;
+    }
+
+    &:hover {
+      border-color: #fff;
+    }
+  }
+
+  .filter-overlay {
+    
+    position: fixed;
+    inset: 0;
+    
+      position: relative;
+      left: 0;
+      margin-top:-58px;
+      background-color: #111;
+
+    .filter-content {
+      
+      border-radius: 8px;
+      display: flex;
+      gap: 12px;
+
+      .category-button {
+        font-family: $category-font;
+        font-size: 23px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid #888;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: 500;
+  transition: background 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+
+  &.active {
+    border-width: 2px;
+  }
+
+  &.all {
+    background: $cardbackground;
+    
+    &.active {
+      border-color: #ccc;
+    }
+  }
+
+  &.conference {
+    background-color: $cardbackground;
+    &:hover {
+      background: $conferencecolor;
+    }
+    &.active {
+      border-color: $fontcolor;
+      background-color: $conferencecolor;
+    }
+  }
+
+  &.workshop {
+    background: $cardbackground;
+    &:hover {
+      background: $workshopcolor;
+    }
+    &.active {
+      border-color: $fontcolor;
+      background: $workshopcolor;
+    }
+  }
+
+  &.event {
+    background: $cardbackground;
+    &:hover {
+      background: rgba($eventcolor,0.9)
+    }
+    &.active {
+      border-color: $fontcolor;
+      background: $eventcolor;
+    }
+  }
+}
+
+    }
+  }
+}
+.filter-content{
+  height:58px;
+}
+
+@media (max-width:$mobileBreakpoint)
+{
+  .page-indicator{
+    display: none;
+  }
+  .updates-wrapper 
+  {  margin: 0;
+    .page-title, .headingline{
+      margin: 0;
+      left: 0;
+      margin-bottom: 10px;
+    }
+    
+    .update-card{
+    width:70vw;
+  }
+    .card-content 
+    {width:60vw;
+      h3{
+      font-family: $primaryFont;
+      margin-top: 0;
+      font-weight: 400;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }}}
+  }
+
+.update-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

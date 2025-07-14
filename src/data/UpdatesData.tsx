@@ -19,7 +19,7 @@ export const updates: UpdateItem[] = [
   {
     id: 2,
     title: 'International Aero-Astro Space Conclave (IAASC)',
-    image: '/img2.jpg',
+    image:  ('/image.jpg'),
     date: '2025-07-01',
     category: 'Event',
     description: 'During APOGEE 2024, we successfully organised the International Aero-Astro Space Conclave (IAASC), a landmark event that brought together leaders and enthusiasts from across the space sector. The conclave featured insightful panel talks with industry experts, including a special session with NASA astronaut Dr. Anil Menon. An engaging space-tech expo showcased innovations from over 10 leading companies, including GalaxEye, Paanduv Applications, and SkyServe. Additionally, the team initiated a formal request for a downlink from the International Space Station (ISS), marking a significant step toward real-time satellite communication.',
