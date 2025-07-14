@@ -1,6 +1,6 @@
 import styles from "./Nav.module.scss";
 import { NavLink } from "react-router-dom";
-import { useGSAP } from "@gsap/react";
+import { useGSAP, type ReactRef } from "@gsap/react";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -15,7 +15,12 @@ const navItems = [
   { name: "Contact Us", path: "/contact" },
 ];
 
-export default function Nav() {
+interface propType {
+  isNavigating: React.RefObject<boolean>,
+  isNavigatingViaNav: React.RefObject<boolean>,
+}
+
+export default function Nav(props: propType) {
   const linesRef = useRef<HTMLDivElement[]>([]);
   const location = useLocation();
   const currentPath = location.pathname;
@@ -23,7 +28,7 @@ export default function Nav() {
   const isMobile = window.innerWidth <= 600;
 
   useGSAP(() => {
-    let delay = currentPath === "/" ? 9 : 1;
+    let delay = currentPath === "/" ? 7.5 : 1;
     gsap.from(`.${styles.navItem}`, {
       duration: 0.5,
       opacity: 0,
@@ -190,7 +195,19 @@ export default function Nav() {
           {navItems.map((item, index) => (
             <li key={index} className={styles.navItem}>
               <NavLink
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  props.isNavigatingViaNav.current = true;
+                  window.addEventListener("scroll", function cb() {
+                    window.removeEventListener("scroll", cb)
+                    props.isNavigating.current = true;
+                  })
+                  window.addEventListener("scrollend", function cb() {
+                    window.removeEventListener("scrollend", cb)
+                    props.isNavigating.current = false;
+                    props.isNavigatingViaNav.current = false;
+                  })
+                }}
                 to={item.path}
                 className={({ isActive }) =>
                   isActive ? styles.activeLink : styles.navLink
