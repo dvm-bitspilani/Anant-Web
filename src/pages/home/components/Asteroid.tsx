@@ -42,7 +42,7 @@ export default function Asteroid({className, key, astroIntroOver, setAstroIntroO
             x: `100%`
         }, {
             rotateZ: randomInt(0, 360),
-            y: `100%`,
+            y: `0%`,
             x: `-100%`,
             duration: randDuration,
             ease: 'none',
