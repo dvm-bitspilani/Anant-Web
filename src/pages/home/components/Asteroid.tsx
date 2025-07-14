@@ -7,12 +7,12 @@ import { randomInt } from '../../../global';
 
 export default function Asteroid({className, key, astroIntroOver, setAstroIntroOver}: {className: string, key: number, astroIntroOver: boolean, setAstroIntroOver: React.Dispatch<React.SetStateAction<boolean>>}) {
 
-    console.log(astroIntroOver, setAstroIntroOver) //? Temp, just to get rid of build errors
-    let customStylesRef = useRef({
+    astroIntroOver; setAstroIntroOver //? Temp line to avoid unnecessary error
+    const customStylesRef = useRef({
         width: `${randomInt(5, 75)}px`,
     })
 
-    let customPropertiesRef = useRef({
+    const customPropertiesRef = useRef({
         src: `./assets/images/asteroid-${randomInt(1, 13 + 1)}.png`,
     })
     
@@ -42,7 +42,7 @@ export default function Asteroid({className, key, astroIntroOver, setAstroIntroO
             x: `100%`
         }, {
             rotateZ: randomInt(0, 360),
-            y: `100%`,
+            y: `0%`,
             x: `-100%`,
             duration: randDuration,
             ease: 'none',

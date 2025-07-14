@@ -138,7 +138,7 @@ export default function Hero() {
 			<div className={styles.asteroidContWrapper}>
 				<div className={styles.asteroidContainer}>
 					{
-						Array(40).fill(null).map((value, index) => <Asteroid 
+						Array(30).fill(null).map((value, index) => <Asteroid 
 							key={index + value} 
 							className={styles.asteroid}
 							astroIntroOver={astroIntroOver}
