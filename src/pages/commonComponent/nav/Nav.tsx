@@ -1,6 +1,6 @@
 import styles from "./Nav.module.scss";
 import { NavLink } from "react-router-dom";
-import { useGSAP, type ReactRef } from "@gsap/react";
+import { useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
