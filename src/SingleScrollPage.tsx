@@ -48,7 +48,7 @@ function SingleScrollPage() {
     if (targetRef && !isNavigating.current) {
       targetRef.scrollIntoView({
         behavior: "smooth",
-        block: (page === "" && !isNavigatingViaNav.current) ? "nearest" : "start",
+        block: (!isNavigatingViaNav.current) ? "nearest" : "start",
       });
     }
   }, [location.pathname]);

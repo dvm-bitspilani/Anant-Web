@@ -1,162 +1,185 @@
 @use "../../global.scss" as *;
 
 .publicationsSection {
-  min-height: 100vh;
-  padding: 2.5rem 1rem 4rem 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  background: transparent;
+	min-height: 100vh;
+	padding: 2.5rem 1rem 4rem 3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	background: transparent;
 }
 
 .titleContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 2.5rem;
-  position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 2.5rem;
+	position: relative;
 
-  .title {
-    margin: 0.5rem 0px;
-    color: $fgColor;
-    font-family: $primaryFont;
-    font-size: 2rem;
-    text-align: center;
-  }
+	.title {
+		margin: 0.5rem 0px;
+		color: $fgColor;
+		font-family: $primaryFont;
+		font-size: 2rem;
+		text-align: center;
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
 }
 
 .cardsGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.2rem 2.2rem;
-  justify-content: center;
-  margin-bottom: 2.5rem;
-  width: 100%;
-  max-width: 1200px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2.2rem 2.2rem;
+	justify-content: center;
+	margin-bottom: 2.5rem;
+	width: 100%;
+	max-width: 1200px;
 }
 
 .card {
-  position: relative;
-  width: 370px;
-  height: 260px; 
-  background: transparent;
-  border: none;
-  border-radius: 12px;
-  color: #fff;
-  text-decoration: none;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 16px #000a;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  &:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 0 24px #1e90ff55;
-    .cardTitle {
-      text-decoration: underline;
-    }
-  }
+	position: relative;
+	width: 370px;
+	height: 260px;
+	background: transparent;
+	border: none;
+	border-radius: 12px;
+	color: #fff;
+	text-decoration: none;
+	overflow: hidden;
+	transition: transform 0.2s, box-shadow 0.2s;
+	box-shadow: 0 0 16px #000a;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	&:hover {
+		transform: translateY(-6px) scale(1.03);
+		// box-shadow: 0 0 24px #1e90ff55;
+		.cardTitle {
+			text-decoration: underline;
+		}
+	}
 }
 
 .cardFrame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  user-select: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1;
+	user-select: none;
 }
 
 .cardContent {
-  position: relative;
-  z-index: 2;
-  font-family: $paragraphFont;
-  padding: 1.2rem 1.2rem 1rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+	position: relative;
+	z-index: 2;
+	font-family: $paragraphFont;
+	padding: 9px 18px 18px 18px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	max-height: 100%;
 }
 
 .cardHeader {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 0.5rem;
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 0.5rem;
 }
 
 .cardLocation {
-  background: #1e2a3a;
-  color: #7fd1ff;
-  font-size: 0.95rem;
-  padding: 0.2rem 0.8rem;
-  border-radius: 6px;
-  font-weight: 500;
+	// background: #1e2a3a;
+	color: #87A1F7; // #7fd1ff;
+	font-family: $primaryFont;
+	font-size: 0.95rem;
+	padding: 0.2rem 0rem;
+	max-width: calc(54% - 0.8rem);
+	border-radius: 6px;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
 }
 
 .cardTitle {
-  font-size: 1.08rem;
-  font-weight: bold;
-  margin-bottom: 0.7rem;
-  color: #fff;
-  line-height: 1.25;
-  text-decoration: none;
-  word-break: break-word;
+	font-size: 1.08rem;
+	font-weight: bold;
+	margin-bottom: 0.7rem;
+	color: #fff;
+	line-height: 1.25;
+	text-decoration: none;
+	word-break: break-word;
+	line-clamp: 2;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 }
 
 .cardAuthors {
-  font-size: 0.95rem;
-  color: #b0c4de;
-  margin-bottom: 0.5rem;
+	font-size: 0.95rem;
+	color: #b0c4de;
+	margin-bottom: 0.5rem;
+	line-clamp: 5;
+	-webkit-line-clamp: 5;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 }
 
 .cardPresentedAt {
-  font-size: 0.92rem;
-  color: #b0c4de;
-  margin-top: auto; 
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  background: transparent;
-  min-height: 1.5em;
-  display: block;
-  width: 75%;
-  word-break: break-word;
+	font-size: 0.92rem;
+	color: #b0c4de;
+	margin-top: auto;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	background: transparent;
+	min-height: 1.5em;
+	display: block;
+	width: 80%;
+	word-break: break-word;
+	line-clamp: 2;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 }
 
 .pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  margin-top: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2.5rem;
+	margin-top: 1.5rem;
 }
 
 .arrowBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  transition: filter 0.2s;
-  display: flex;
-  align-items: center;
-  &:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-  img {
-    width: 44px;
-    height: 44px;
-    user-select: none;
-    pointer-events: none;
-  }
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem;
+	transition: filter 0.2s;
+	display: flex;
+	align-items: center;
+	&:disabled {
+		opacity: 0.3;
+		cursor: not-allowed;
+	}
+	img {
+		width: 44px;
+		height: 44px;
+		user-select: none;
+		pointer-events: none;
+	}
 }
 
 .pageInfo {
-  color: #fff;
-  font-family: $primaryFont;
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: 1px;
+	color: #fff;
+	font-family: $primaryFont;
+	font-size: 1.5rem;
+	font-weight: 500;
+	letter-spacing: 1px;
 }
