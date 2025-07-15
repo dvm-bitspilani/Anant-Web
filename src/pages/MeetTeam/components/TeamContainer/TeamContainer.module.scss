@@ -1,0 +1,24 @@
+@use "../../../../global.scss" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.team__container {
+  @include displayFlex($direction: column, $justify: unset);
+  gap: 1.5vw;
+  width: 100%;
+  height: 100%;
+
+  .team__heading {
+    color: white;
+    font: 400 1.7vw $primaryFont;
+    align-self: flex-start;
+    margin-left: 13.65vw;
+  }
+  .team__cards {
+    width: 73%;
+    @include displayFlex($justify: space-between);
+  }
+}

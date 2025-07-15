@@ -1,0 +1,118 @@
+@use "../../global.scss" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.meetTeam {
+  width: 100%;
+  height: 100%;
+  @include displayFlex($direction: column, $justify: unset);
+  background: center / cover no-repeat
+    url("/public/assets/images/meet-team/bg.png");
+
+  .separator {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+  }
+  .systemTeam {
+    margin: 2.71vw 5vw 0 0;
+  }
+  .seniorTeam {
+    margin: 0 0 2.3vw 8vw;
+    align-items: flex-start;
+    h3 {
+      margin-left: 0 !important;
+    }
+  }
+  .juniorTeam {
+    margin-left: 8vw;
+    align-items: flex-start;
+    h3 {
+      margin-left: 0 !important;
+    }
+  }
+
+  .topTeam {
+    width: 100%;
+    height: 100%;
+    @include displayFlex($direction: column, $justify: unset);
+    padding: 4.2vw 0 5vw 0;
+
+    .heading {
+      width: 17.5vw;
+      margin-bottom: 3.75vw;
+    }
+  }
+  .bottomTeam {
+    width: 100%;
+    height: 100%;
+    @include displayFlex($direction: column, $justify: unset);
+    padding: 2.67vw 0;
+
+    .navigator_container {
+      height: 100%;
+      @include displayFlex($direction: column, $justify: unset);
+      gap: 1.45vw;
+      margin-bottom: 1.5vw;
+
+      .navigator {
+        width: 66.6vw;
+        aspect-ratio: 20.7;
+        @include displayFlex;
+        gap: 0;
+        position: relative;
+
+        p {
+          @include displayFlex;
+          height: 100%;
+          color: white;
+          font: 400 1vw $primaryFont;
+          position: absolute;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .leftHead {
+          top: 0;
+          left: 0;
+          width: 22.9vw;
+          img {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        .centerHead {
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 23.7vw;
+          img {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        .rightHead {
+          top: 0;
+          right: 0;
+          width: 22vw;
+          img {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+}
