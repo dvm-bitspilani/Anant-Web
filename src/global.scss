@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 $spaceBlack: #090708;
 $fgColor: #eeeeee;
 $mobileBreakpoint: 600px;
@@ -17,4 +22,11 @@ $paragraphFont: "Rajdhani", "Time New Roman";
 
 html {
   overflow-x: hidden;
+}
+
+@mixin displayFlex($direction: row, $align: center, $justify: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
 }
