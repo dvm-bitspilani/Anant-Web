@@ -7,6 +7,7 @@ import ContactUs from "./pages/contactUs/ContactUs";
 import { useEffect, useRef } from "react";
 import UpdatesPage from "./pages/updates/Updates";
 import MeetTeam from "./pages/MeetTeam/MeetTeam";
+import Publications from "./pages/publications/Publications";
 import styles from "./SingleScrollerPage.module.scss";
 
 const pages = [
@@ -18,6 +19,8 @@ const pages = [
   "contact",
 ];
 function SingleScrollPage() {
+  const isNavigating = useRef<boolean>(false);
+  const isNavigatingViaNav = useRef<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
   const pageRefs = useRef(
@@ -42,11 +45,11 @@ function SingleScrollPage() {
       navigate("/");
       return;
     }
-
-    if (targetRef) {
+    
+    if (targetRef && !isNavigating.current) {
       targetRef.scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: (page === "" && !isNavigatingViaNav.current) ? "nearest" : "start",
       });
     }
   }, [location.pathname]);
@@ -57,21 +60,28 @@ function SingleScrollPage() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const page = entry.target.id;
-            if ((page && pages.includes(page)) || page === "") {
+            if ((!isNavigating.current && page && pages.includes(page)) || page === "") {
               navigate(`/${page}`);
             }
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.25 }
     );
-    Object.values(pageRefs.current).forEach((ref) => {
+    const homeObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isNavigating.current) navigate("/")
+      }, {threshold: 0.1} // this is due to home taking 2 viewport height at minimum
+    )
+    Object.values(pageRefs.current).slice(1).forEach((ref) => {
       if (ref) {
         observer.observe(ref);
       }
     });
+    if (pageRefs.current["home"]) homeObserver.observe(pageRefs.current["home"])
     return () => {
       observer.disconnect();
+      homeObserver.disconnect();
     };
   }, []);
 
@@ -80,9 +90,12 @@ function SingleScrollPage() {
       <div className={styles.mainBg}>
         <div className={styles.mainBgImage}></div>
       </div>
-      <Nav />
+      <Nav 
+        isNavigating={isNavigating}
+        isNavigatingViaNav={isNavigatingViaNav} />
       <Home ref={setRef(pages[0])} />
       <UpdatesPage ref={setRef(pages[1])} />
+      <Publications ref={setRef(pages[2])} id={pages[2]} />
       <MeetTeam ref={setRef(pages[4])} />
       <ContactUs ref={setRef(pages[5])} />
     </div>

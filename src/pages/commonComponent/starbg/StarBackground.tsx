@@ -8,7 +8,7 @@ const Star = ({ className }: { className: string }) => {
         top: `${randomInt(0, 100)}%`,
         left: `${randomInt(0, 100)}%`,
         opacity: randomInt(4, 8) / 10,
-        width: `${randomInt(1, 5)}px`,
+        width: `${randomInt(2, 5)}px`,
     });
 
     return <div className={className} style={customStylesRef.current} />;
