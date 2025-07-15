@@ -1,0 +1,25 @@
+@use "../../../../global.scss" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  @include displayFlex($direction: column);
+  padding-top: 0.8vw;
+  width: 11.82vw;
+  background-color: #46454566;
+
+  img {
+    width: 10.3vw;
+    border-radius: 0.41vw;
+  }
+  h3 {
+    width: 80%;
+    color: white;
+    text-align: center;
+    font: 400 1vw $primaryFont;
+    margin: 1vw 0 1.5vw 0;
+  }
+}
