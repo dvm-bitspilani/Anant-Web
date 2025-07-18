@@ -59,6 +59,10 @@
 		.cardTitle {
 			text-decoration: underline;
 		}
+
+		.cardFrameBg {
+			opacity: 0.2;
+		}
 	}
 }
 
@@ -71,6 +75,13 @@
 	pointer-events: none;
 	z-index: 1;
 	user-select: none;
+}
+
+.cardFrameBg {
+	@extend .cardFrame;
+	opacity: 0;
+	transition: opacity 0.3s;
+	filter: sepia() hue-rotate(180deg) saturate(10000%);
 }
 
 .cardContent {
@@ -95,6 +106,7 @@
 	color: #87A1F7; // #7fd1ff;
 	font-family: $primaryFont;
 	font-size: 0.95rem;
+	min-height: 1.5rem;
 	padding: 0.2rem 0rem;
 	max-width: calc(54% - 0.8rem);
 	border-radius: 6px;
@@ -145,7 +157,7 @@
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 	display: -webkit-box;
-	-webkit-box-orient: vertical;
+	-webkit-box-orient: vertical;	
 }
 
 .pagination {

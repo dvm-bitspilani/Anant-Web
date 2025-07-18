@@ -8,7 +8,7 @@ $eventscolor: rgb(183, 70, 0);
 $lin: #f0e68c;
 .updates-wrapper {
 	padding: 2rem;
-	max-width: 60vw;
+	max-width: 65vw;
 	height: 100vh !important;
 	margin: 0 auto;
 	margin-left: 75px;
@@ -114,6 +114,7 @@ $lin: #f0e68c;
 				align-self: center;
 				font-size: 1.75rem;
 				color: $fontcolor;
+				padding: 0px 12px;
 				padding-bottom: 1rem;
 				width: 100%;
 				overflow-x: hidden;
@@ -121,10 +122,19 @@ $lin: #f0e68c;
 				text-overflow: ellipsis;
 			}
 
+			// .line > svg {width: 100%;}
+			.line {
+				height: 1px;
+				border-radius: 100%;
+				width: 100%;
+				background-image: linear-gradient(to right, transparent, rgb(172, 172, 172), rgb(215, 215, 215), rgb(172, 172, 172), transparent);
+
+			}
+
 			.des {
 				margin: 0;
 				margin-right: 5%;
-				margin-left: 5%;
+				margin-left: 12px;
 				line-height: 100%;
 				color: $fontcolor;
 				font-family: $paragraphFont;

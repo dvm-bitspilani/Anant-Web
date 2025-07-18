@@ -48,7 +48,7 @@ const UpdatesCarousel: React.FC = () => {
 	}, [activeUpdate, windowWidth]);
 
 	return (
-		<StarBackground numOfStars={25}>
+		<StarBackground numOfStars={15}>
 			<div className="updates-wrapper">
 				<h2 className="page-title">Updates</h2>
 				<div className="headingline" >
@@ -184,25 +184,7 @@ const UpdatesCarousel: React.FC = () => {
 									>
 										{update.title}
 									</h3>
-									<div className="line">
-										<svg width="880" height="2" viewBox="0 0 880 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<line x1="0.368652" y1="0.637526" x2="833.7" y2="1.55779" stroke="url(#paint0_linear_365_39)" stroke-width="0.920261" />
-											<line x1="46" y1="0.637526" x2="879.331" y2="1.55779" stroke="url(#paint1_linear_365_39)" stroke-width="0.920261" />
-											<defs>
-												<linearGradient id="paint0_linear_365_39" x1="0.368652" y1="1.55779" x2="833.7" y2="1.55779" gradientUnits="userSpaceOnUse">
-													<stop stop-color="white" stop-opacity="0.2" />
-													<stop offset="0.528846" stop-color="white" />
-													<stop offset="1" stop-color="#999999" stop-opacity="0.2" />
-												</linearGradient>
-												<linearGradient id="paint1_linear_365_39" x1="46" y1="1.55779" x2="879.331" y2="1.55779" gradientUnits="userSpaceOnUse">
-													<stop stop-color="white" stop-opacity="0.2" />
-													<stop offset="0.528846" stop-color="white" />
-													<stop offset="1" stop-color="#999999" stop-opacity="0.2" />
-												</linearGradient>
-											</defs>
-										</svg>
-
-									</div>
+									<div className="line"></div>
 									<img
 										src={update.image}
 										alt={update.title}
