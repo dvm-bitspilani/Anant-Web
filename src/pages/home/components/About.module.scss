@@ -11,6 +11,7 @@
         top: 0%;
         left: 0%;
         z-index: 0;
+        overflow: hidden;
 
         .aboutBGImg {
             // background-image: url("/assets/images/about-curvyBG.png");
@@ -72,11 +73,13 @@
     }
 
     .aboutContent {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 18px;
         width: 100%;
+        z-index: 10;
 
         .aboutTitleContainer {
             margin-bottom: 30px;
@@ -87,6 +90,7 @@
                 font-family: $primaryFont;
                 font-size: 1.5rem;
                 text-align: center;
+                font-weight: 500;
             }
 
             .aboutTitleBottom {

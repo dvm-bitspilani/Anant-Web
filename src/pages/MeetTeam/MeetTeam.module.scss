@@ -5,12 +5,13 @@
   padding: 0;
 }
 
+.teamPage {position: relative;}
 .meetTeam {
   width: 100%;
   height: 100%;
   @include displayFlex($direction: column, $justify: unset);
-  background: center / cover no-repeat
-    url("/public/assets/images/meet-team/bg.png");
+  // background: center / cover no-repeat
+    // url("/public/assets/images/meet-team/bg.png");
 
   .separator {
     width: 100%;

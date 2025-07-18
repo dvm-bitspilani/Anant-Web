@@ -2,3 +2,4 @@
 export const randomInt = (lowerLim: number = 1, upperLim: number) => {
     return Math.floor(Math.random()*(upperLim - lowerLim) + lowerLim)
 }
+

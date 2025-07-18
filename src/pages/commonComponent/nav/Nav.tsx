@@ -198,15 +198,13 @@ export default function Nav(props: propType) {
                 onClick={() => {
                   setIsMenuOpen(false);
                   props.isNavigatingViaNav.current = true;
-                  window.addEventListener("scroll", function cb() {
-                    window.removeEventListener("scroll", cb)
+                  window.addEventListener("scroll", () => {
                     props.isNavigating.current = true;
-                  })
-                  window.addEventListener("scrollend", function cb() {
-                    window.removeEventListener("scrollend", cb)
+                  }, {once: true})
+                  window.addEventListener("scrollend", () => {
                     props.isNavigating.current = false;
                     props.isNavigatingViaNav.current = false;
-                  })
+                  }, {once: true})
                 }}
                 to={item.path}
                 className={({ isActive }) =>

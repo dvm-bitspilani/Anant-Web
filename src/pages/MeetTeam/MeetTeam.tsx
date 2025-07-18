@@ -103,57 +103,59 @@ const MeetTeam = forwardRef<HTMLDivElement>((_, ref) => {
   };
 
   return (
-    <StarBackground numOfStars={25}>
-      <div className={styles.meetTeam} ref={ref} id="team">
-        <span className={styles.separator}></span>
-        <div className={styles.topTeam}>
-          <img src={heading} alt="heading" className={styles.heading} />
-          <Card name="Some Random Long Name" image={user} />
-          <TeamContainer
-            heading="System Team"
-            teamMembers={teamMembers}
-            className={styles.systemTeam}
-          />
-        </div>
-        <span className={styles.separator}></span>
-        <div className={styles.bottomTeam}>
-          <div className={styles.navigator_container}>
-            {navData.map((row, rowIdx) => (
-              <div className={styles.navigator} key={`row-${rowIdx}`}>
-                {row.map((item, colIdx) => (
-                  <p
-                    className={styles[item.className as keyof typeof styles]}
-                    key={item.key}
-                    onClick={() => handleNavClick(rowIdx, colIdx, item.key)}
-                  >
-                    {item.text}
-                    <img
-                      src={
-                        activeKey === item.key
-                          ? item.activeImg
-                          : item.defaultImg
-                      }
-                      alt={item.className}
-                    />
-                  </p>
-                ))}
-              </div>
-            ))}
+    <div className={styles.teamPage}>
+      <StarBackground numOfStars={15}>
+        <div className={styles.meetTeam} ref={ref} id="team">
+          {/* <span className={styles.separator}></span> */}
+          <div className={styles.topTeam}>
+            <img src={heading} alt="heading" className={styles.heading} />
+            <Card name="Some Random Long Name" image={user} />
+            <TeamContainer
+              heading="System Team"
+              teamMembers={teamMembers}
+              className={styles.systemTeam}
+            />
           </div>
-          <TeamContainer
-            heading="Senior Members - 2023"
-            teamMembers={teamMembers2}
-            className={styles.seniorTeam}
-          />
-          <TeamContainer
-            heading="Junior Members - 2024"
-            teamMembers={teamMembers2}
-            className={styles.juniorTeam}
-          />
+          {/* <span className={styles.separator}></span> */}
+          <div className={styles.bottomTeam}>
+            <div className={styles.navigator_container}>
+              {navData.map((row, rowIdx) => (
+                <div className={styles.navigator} key={`row-${rowIdx}`}>
+                  {row.map((item, colIdx) => (
+                    <p
+                      className={styles[item.className as keyof typeof styles]}
+                      key={item.key}
+                      onClick={() => handleNavClick(rowIdx, colIdx, item.key)}
+                    >
+                      {item.text}
+                      <img
+                        src={
+                          activeKey === item.key
+                            ? item.activeImg
+                            : item.defaultImg
+                        }
+                        alt={item.className}
+                      />
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <TeamContainer
+              heading="Senior Members - 2023"
+              teamMembers={teamMembers2}
+              className={styles.seniorTeam}
+            />
+            <TeamContainer
+              heading="Junior Members - 2024"
+              teamMembers={teamMembers2}
+              className={styles.juniorTeam}
+            />
+          </div>
+          {/* <span className={styles.separator}></span> */}
         </div>
-        <span className={styles.separator}></span>
-      </div>
-    </StarBackground>
+      </StarBackground>
+    </div>
   );
 });
 

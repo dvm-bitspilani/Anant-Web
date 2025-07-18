@@ -1,0 +1,49 @@
+@use "../../global.scss" as *;
+
+.preloader {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    .preloaderBg {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        .star {
+            position: absolute;
+            background-color: white;
+            aspect-ratio: 1;
+            border-radius: 100%;
+            top: 50%;
+            left: 50%;
+            opacity: -1;
+            box-shadow: 0px 0px 12px white, 0px 0px 6px white;;
+        }
+    }
+
+    .percentWrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(-50%, -50%);
+        background-color: $spaceBlack;
+        aspect-ratio: 1;
+        border-radius: 100%;
+
+        .percentText {
+            background-image: linear-gradient(rgb(246, 246, 246), rgb(94, 94, 94));
+            text-align: center;
+            color: transparent;
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: $primaryFont;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+    }
+}
